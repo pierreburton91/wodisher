@@ -3,7 +3,7 @@ Punisher / Finisher workout randomizer
 
 ## Todo
 - ~~Setup dev environement~~
-- Design
+- ~~Design~~
 - Movements & reps count spec.
 - Basic usage
 - Bad gambler option
