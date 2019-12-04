@@ -2,7 +2,7 @@
 Punisher / Finisher workout randomizer
 
 ## Todo
-- Setup dev environement
+- ~~Setup dev environement~~
 - Design
 - Movements & reps count spec.
 - Basic usage
