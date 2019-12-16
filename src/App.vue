@@ -1,28 +1,59 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="app">
+    <TopBar />
+    <Placeholders v-if="!isPlaying" />
+    <Results v-if="isPlaying" />
+    <Controls
+      :isPlaying="isPlaying"
+      :isBadGambler="options.isBadGambler"
+      @onRoll="roll()"
+      @onShowOptions="toggleOptionsModal()"
+    />
+    <Footer />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import TopBar from "@/components/TopBar.vue";
+import Placeholders from "@/components/Placeholders.vue";
+import Results from "@/components/Results.vue";
+import Controls from "@/components/Controls.vue";
+import Footer from "@/components/Footer.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld
+    TopBar,
+    Placeholders,
+    Results,
+    Controls,
+    Footer
+  },
+  data() {
+    return {
+      isPlaying: false,
+      showOptionsModal: false,
+      options: {
+        isBadGambler: false
+      }
+    };
+  },
+  methods: {
+    roll() {
+      this.isPlaying = true;
+    },
+    toggleOptionsModal() {
+      this.showOptionsModal = !this.showOptionsModal;
+    }
   }
 };
 </script>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+.app {
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
 }
 </style>
