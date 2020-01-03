@@ -1,6 +1,6 @@
 <template>
   <div class="section">
-    <div class="is-size-1">{{ quotes[index] }}</div>
+    <div class="placeholder" v-html="quotes[index]"></div>
   </div>
 </template>
 
@@ -10,9 +10,9 @@ export default {
   data() {
     return {
       quotes: [
-        "Si vis pacem, para bellum.",
-        "I've no idea how things will end up.",
-        "My favorite sound in the world is the silence after the first gunshot."
+        "<span class='fade-in-out'>Si vis pacem, para bellum.</span>",
+        "<span class='fade-in-out'>I've no idea how things will end up.</span>",
+        "<span class='fade-in-out'>My favorite sound in the world is the silence after the first gunshot.</span>"
       ],
       index: 0,
       interval: null
@@ -29,4 +29,33 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.placeholder {
+  font-size: 2rem;
+}
+.fade-in-out {
+  opacity: 0;
+  animation: fadeInOut 10s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .placeholder {
+    font-size: 3rem;
+  }
+}
+</style>

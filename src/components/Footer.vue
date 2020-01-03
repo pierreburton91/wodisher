@@ -1,5 +1,5 @@
 <template>
-  <footer class="level">
+  <footer>
     <div class="level-left">
       <div class="level-item">Copyright 2019</div>
       <div class="level-item">

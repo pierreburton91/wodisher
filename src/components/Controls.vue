@@ -1,20 +1,26 @@
 <template>
   <div class="section">
     <div>
-      <button type="button" class="button is-primary is-large rollButton">
-        Roll a workout
+      <button
+        type="button"
+        class="button is-primary is-large rollButton"
+        @click="roll()"
+      >
+        {{ playingLabel }}
       </button>
       <button
         type="button"
-        class="button is-primary is-large is-outlined has-text-white"
+        class="button is-primary is-large is-outlined has-text-white optionsButton"
+        @click="showOptions()"
       >
         Options
       </button>
     </div>
     <Switcher
-      class="bad-gambler-container"
-      :isBadGambler="isBadGambler"
-      @input="handleBadGamblerUpdate($event)"
+      class="challenger-mode-container"
+      :isChecked="isChallengerMode"
+      label="Challenger"
+      @onChange="handleBadGamblerUpdate($event)"
     />
   </div>
 </template>
@@ -27,9 +33,9 @@ export default {
   components: {
     Switcher
   },
-  props: ["isBadGambler"],
+  props: ["isChallengerMode", "isPlaying"],
   model: {
-    prop: "isBadGambler",
+    prop: "isChallengerMode",
     event: "onBadGamblerUpdate"
   },
   data() {
@@ -38,9 +44,19 @@ export default {
   methods: {
     handleBadGamblerUpdate(checked) {
       this.$emit("onBadGamblerUpdate", checked);
+    },
+    roll() {
+      this.$emit("onRoll");
+    },
+    showOptions() {
+      this.$emit("onShowOptions");
     }
   },
-  computed: {},
+  computed: {
+    playingLabel() {
+      return this.isPlaying ? "Reroll" : "Roll a workout";
+    }
+  },
   created() {}
 };
 </script>
@@ -49,8 +65,11 @@ export default {
 .rollButton {
   width: 100%;
 }
+.optionsButton {
+  display: none;
+}
 
-.bad-gambler-container {
+.challenger-mode-container {
   display: none;
 }
 
@@ -59,10 +78,13 @@ export default {
     width: auto;
     margin-right: 32px;
   }
+  .optionsButton {
+    display: inline-block;
+  }
   .button {
     min-width: 216px;
   }
-  .bad-gambler-container {
+  .challenger-mode-container {
     display: block;
     margin-top: 32px;
   }

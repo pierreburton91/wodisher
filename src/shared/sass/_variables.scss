@@ -3,9 +3,10 @@ $family-sans-serif: 'Muli', sans-serif;
 $primary: #FA2942;
 $primary-dark: #941827;
 $light: #FEFCFE;
-$dark: #121418;
+$dark: #121317;
+$darkLight: #272c34;
 
-$body-background-color: #121418;
+$body-background-color: $dark;
 $body-overflow-y: auto;
 $text: $light;
 $link: $primary;
