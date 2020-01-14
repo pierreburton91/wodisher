@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss">
 .placeholder {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 .fade-in-out {
   opacity: 0;
@@ -55,7 +55,8 @@ export default {
 
 @media screen and (min-width: 1024px) {
   .placeholder {
-    font-size: 3rem;
+    font-size: 4rem;
+    min-height: 192px;
   }
 }
 </style>

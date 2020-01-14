@@ -1,19 +1,19 @@
 export default [
   {
     name: "Burpees",
-    equipment: ["body"],
+    equipment: [],
     muscleGroup: ["cardio"],
     hasLoads: false
   },
   {
-    name: "Cal Assault bike",
-    equipment: ["assault bike"],
+    name: "Cal Assault-bike",
+    equipment: ["assault-bike"],
     muscleGroup: ["cardio", "legs", "arms"],
     hasLoads: false
   },
   {
-    name: "Cal Assault run",
-    equipment: ["assault run"],
+    name: "Cal Assault-run",
+    equipment: ["assault-run"],
     muscleGroup: ["cardio", "legs"],
     hasLoads: false
   },
@@ -37,128 +37,128 @@ export default [
   },
   {
     name: "Push-ups",
-    equipment: ["body"],
+    equipment: [],
     muscleGroup: ["arms", "chest"],
     hasLoads: false
   },
   // {
   //   name: "Wide Push-ups",
-  //   equipment: ["body"],
+  //   equipment: [],
   //   muscleGroup: ["arms", "chest"],
   //   hasLoads: false
   // },
   // {
   //   name: "Diamond Push-ups",
-  //   equipment: ["body"],
+  //   equipment: [],
   //   muscleGroup: ["arms", "chest"],
   //   hasLoads: false
   // },
   {
     name: "Squats",
-    equipment: ["body"],
+    equipment: [],
     muscleGroup: ["legs"],
     hasLoads: false
   },
   // {
   //   name: "Jumping Squats",
-  //   equipment: ["body"],
+  //   equipment: [],
   //   muscleGroup: ["legs"],
   //   hasLoads: false
   // },
   {
     name: "Lunges",
-    equipment: ["body"],
+    equipment: [],
     muscleGroup: ["legs"],
     hasLoads: false
   },
   // {
   //   name: "Jumping Lunges",
-  //   equipment: ["body"],
+  //   equipment: [],
   //   muscleGroup: ["legs"],
   //   hasLoads: false
   // },
   {
     name: "Sit-ups",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   {
     name: "Hollow rocks",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   {
     name: "sec Hollow hold",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   {
     name: "V-ups",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   {
     name: "Side raises",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   {
     name: "Flutter kicks",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   {
     name: "sec Plank",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   // {
   //   name: "Strict Toes to bar",
-  //   equipment: ["body"],
-  //   muscleGroup: ["abs", 'lats'],
+  //   equipment: [],
+  //   muscleGroup: ["core", 'lats'],
   //   hasLoads: false
   // },
   {
     name: "Toes to bar",
-    equipment: ["body"],
-    muscleGroup: ["abs", "lats"],
+    equipment: [],
+    muscleGroup: ["core", "back"],
     hasLoads: false
   },
   // {
   //   name: "Strict Pull-ups",
-  //   equipment: ["body"],
+  //   equipment: [],
   //   muscleGroup: ["back", 'arms'],
   //   hasLoads: false
   // },
   {
     name: "Pull-ups",
-    equipment: ["body"],
+    equipment: [],
     muscleGroup: ["back", "arms"],
     hasLoads: false
   },
   // {
   //   name: "Strict Chest to bar",
-  //   equipment: ["body"],
+  //   equipment: [],
   //   muscleGroup: ["back", 'arms'],
   //   hasLoads: false
   // },
   {
     name: "Chest to bar",
-    equipment: ["body"],
+    equipment: [],
     muscleGroup: ["back", "arms"],
     hasLoads: false
   },
   {
     name: "Muscle-ups",
-    equipment: ["body"],
-    muscleGroup: ["back", "lats", "arms"],
+    equipment: [],
+    muscleGroup: ["back", "arms"],
     hasLoads: false
   },
   {
@@ -175,20 +175,20 @@ export default [
   },
   {
     name: "Hand-stand push-ups",
-    equipment: ["body"],
+    equipment: [],
     muscleGroup: ["shoulders", "arms"],
     hasLoads: false
   },
   {
     name: "sec L-sit",
-    equipment: ["body"],
-    muscleGroup: ["abs"],
+    equipment: [],
+    muscleGroup: ["core"],
     hasLoads: false
   },
   {
-    name: "Kettlebell swings",
-    equipment: ["Kettlebell"],
-    muscleGroup: ["abs"],
+    name: "kettlebell swings",
+    equipment: ["kettlebell"],
+    muscleGroup: ["core"],
     hasLoads: true
   },
   {
@@ -218,7 +218,7 @@ export default [
   {
     name: "Devil Press",
     equipment: ["dumbell", "kettlebell"],
-    muscleGroup: ["back", "legs", "shoudlers"],
+    muscleGroup: ["back", "legs", "shoulders"],
     hasLoads: true
   },
   {

@@ -1,16 +1,24 @@
 <template>
   <div class="app">
-    <TopBar />
+    <TopBar @onToggleOptionsModal="toggleOptionsModal()" />
     <Placeholders v-if="!isPlaying" />
     <Results v-if="isPlaying" :wodisher="wodisher" />
     <Controls
       :isPlaying="isPlaying"
-      v-model="options.isChallengerMode"
+      :challengerMode="config.general[0]"
       @onRoll="roll()"
       @onShowOptions="toggleOptionsModal()"
+      @onConfigUpdate="handleConfigUpdate($event)"
     />
     <Footer />
-    <Options v-if="showOptionsModal" @onClose="toggleOptionsModal()" />
+    <Options
+      v-if="showOptionsModal"
+      @onClose="toggleOptionsModal()"
+      @onConfigUpdate="handleConfigUpdate($event)"
+      :general="config.general"
+      :equipments="config.equipments"
+      :muscleGroups="config.muscleGroups"
+    />
   </div>
 </template>
 
@@ -37,8 +45,15 @@ export default {
     return {
       isPlaying: false,
       showOptionsModal: false,
-      options: {
-        isChallengerMode: false
+      config: {
+        general: [
+          {
+            label: "Challenger mode",
+            value: false
+          }
+        ],
+        equipments: [],
+        muscleGroups: []
       },
       movements,
       wodisher: {
@@ -51,6 +66,30 @@ export default {
   methods: {
     roll() {
       this.setWodisher();
+      const availableEquipment = [
+        ...new Set(
+          this.config.equipments
+            .filter(el => el.value)
+            .map(item => item.label)
+            .flat()
+        )
+      ];
+      const targetedMuscleGroups = [
+        ...new Set(
+          this.config.muscleGroups
+            .filter(el => el.value)
+            .map(item => item.label)
+            .flat()
+        )
+      ];
+      console.log(
+        this.movements.filter(el => {
+          return (
+            el.equipment.some(entry => availableEquipment.includes(entry)) &&
+            el.muscleGroup.some(entry => targetedMuscleGroups.includes(entry))
+          );
+        })
+      );
       const reps =
         Math.floor(Math.random() * (this.max - this.min) + this.min) * 10;
       const movement = this.movements[
@@ -65,14 +104,40 @@ export default {
     },
     toggleOptionsModal() {
       this.showOptionsModal = !this.showOptionsModal;
+    },
+    setDefaultConfig() {
+      this.equipments.forEach(value => {
+        this.config.equipments.push({ label: value, value: true });
+      });
+      this.muscleGroups.forEach(value => {
+        this.config.muscleGroups.push({ label: value, value: true });
+      });
+      this.saveConfig();
+    },
+    saveConfig() {
+      localStorage.setItem("config", JSON.stringify(this.config));
+    },
+    getConfig() {
+      this.config = JSON.parse(localStorage.getItem("config"));
+    },
+    handleConfigUpdate({ section, label, checked }) {
+      const configObj = this.config[section].find(el => el.label === label);
+      configObj.value = checked;
+      this.saveConfig();
     }
   },
   computed: {
     max() {
-      return this.options.isChallengerMode ? 13 : 7;
+      return this.config.isChallengerMode ? 13 : 7;
     },
     min() {
-      return this.options.isChallengerMode ? 3 : 1;
+      return this.config.isChallengerMode ? 3 : 1;
+    },
+    equipments() {
+      return [...new Set(this.movements.map(item => item.equipment).flat())];
+    },
+    muscleGroups() {
+      return [...new Set(this.movements.map(item => item.muscleGroup).flat())];
     }
   },
   watch: {
@@ -82,6 +147,13 @@ export default {
       } else {
         clearTimeout(this.timer);
       }
+    }
+  },
+  created() {
+    if (localStorage.getItem("config")) {
+      this.getConfig();
+    } else {
+      this.setDefaultConfig();
     }
   }
 };

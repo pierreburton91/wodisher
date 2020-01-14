@@ -1,8 +1,8 @@
 <template>
   <div class="section">
     <div class="results">
-      <span id="number">{{ wodisher.reps }}</span
-      ><span id="movement" class="movement">{{ wodisher.movement }}</span>
+      <span class="results_number">{{ wodisher.reps }}</span
+      ><span class="results_movement">{{ wodisher.movement }}</span>
     </div>
   </div>
 </template>
@@ -21,17 +21,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.results {
-  font-size: 2rem;
+.results_number,
+.results_movement {
+  display: inline-block;
 }
-.movement {
+.results_number {
+  font-size: 4rem;
+  margin-right: 32px;
+}
+.results_movement {
+  font-size: 2rem;
   opacity: 0.75;
-  margin-left: 32px;
   text-transform: uppercase;
+  width: 100%;
 }
 @media screen and (min-width: 1024px) {
   .results {
-    font-size: 3rem;
+    min-height: 192px;
+  }
+  .results_number {
+    clear: none;
+  }
+  .results_movement {
+    font-size: 4rem;
+    width: auto;
   }
 }
 </style>

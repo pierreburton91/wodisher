@@ -44,34 +44,43 @@
           </g>
         </svg>
       </div>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <button type="button" class="navbar-item icon-button">
-          <svg
-            class="options"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <path
-              d="M299.3,376a40.06,40.06,0,0,1,73.4,0H448a16,16,0,0,1,0,32H372.7a40.06,40.06,0,0,1-73.4,0H64a16,16,0,0,1,0-32Zm-160-136a40.06,40.06,0,0,1,73.4,0H448a16,16,0,0,1,0,32H212.7a40.06,40.06,0,0,1-73.4,0H64a16,16,0,0,1,0-32Zm160-136a40.06,40.06,0,0,1,73.4,0H448a16,16,0,0,1,0,32H372.7a40.06,40.06,0,0,1-73.4,0H64a16,16,0,0,1,0-32Z"
-            />
-          </svg>
-        </button>
-      </div>
+      <button
+        type="button"
+        class="navbar-burger navbar-item icon-button"
+        @click="toggleShowOptions()"
+      >
+        <svg
+          class="options"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
+          <path
+            d="M299.3,376a40.06,40.06,0,0,1,73.4,0H448a16,16,0,0,1,0,32H372.7a40.06,40.06,0,0,1-73.4,0H64a16,16,0,0,1,0-32Zm-160-136a40.06,40.06,0,0,1,73.4,0H448a16,16,0,0,1,0,32H212.7a40.06,40.06,0,0,1-73.4,0H64a16,16,0,0,1,0-32Zm160-136a40.06,40.06,0,0,1,73.4,0H448a16,16,0,0,1,0,32H372.7a40.06,40.06,0,0,1-73.4,0H64a16,16,0,0,1,0-32Z"
+          />
+        </svg>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TopBar"
+  name: "TopBar",
+  methods: {
+    toggleShowOptions() {
+      this.$emit("onToggleOptionsModal");
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/shared/sass/_variables";
 
+.navbar-burger {
+  height: 64px;
+  width: auto;
+}
 .navbar-item {
   padding: 16px 24px;
 }
@@ -104,7 +113,7 @@ export default {
   .navbar-item {
     padding: 24px;
   }
-  .navbar-menu {
+  .navbar-burger {
     display: none;
   }
 }

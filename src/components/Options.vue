@@ -12,28 +12,57 @@
         <h2 class="container_title">Options</h2>
         <button class="button button--text" @click.self="close()">Close</button>
       </div>
-      <div class="option">
-        <div class="option_label">Challenger</div>
+      <label class="label">General</label>
+      <div v-for="item of general" :key="item.label" class="option">
+        <div class="option_label">
+          {{ item.label }}
+        </div>
         <div class="option_control">
-          <Switcher />
+          <Switcher
+            :isChecked="item.value"
+            @onChange="handleConfigUpdate('general', item.label, $event)"
+          />
         </div>
       </div>
-      <div class="option">
-        <div class="option_label">Challenger</div>
+      <label class="label">Equipments</label>
+      <div
+        v-for="equipment of equipments"
+        :key="equipment.label"
+        class="option"
+      >
+        <div class="option_label">
+          {{
+            equipment.label.slice(0, 1).toUpperCase() + equipment.label.slice(1)
+          }}
+        </div>
         <div class="option_control">
-          <Switcher />
+          <Switcher
+            :isChecked="equipment.value"
+            @onChange="
+              handleConfigUpdate('equipments', equipment.label, $event)
+            "
+          />
         </div>
       </div>
-      <div class="option">
-        <div class="option_label">Challenger</div>
-        <div class="option_control">
-          <Switcher />
+      <label class="label">Target muscles groups</label>
+      <div
+        v-for="muscleGroup of muscleGroups"
+        :key="muscleGroup.label"
+        class="option"
+      >
+        <div class="option_label">
+          {{
+            muscleGroup.label.slice(0, 1).toUpperCase() +
+              muscleGroup.label.slice(1)
+          }}
         </div>
-      </div>
-      <div class="option">
-        <div class="option_label">Challenger</div>
         <div class="option_control">
-          <Switcher />
+          <Switcher
+            :isChecked="muscleGroup.value"
+            @onChange="
+              handleConfigUpdate('muscleGroups', muscleGroup.label, $event)
+            "
+          />
         </div>
       </div>
     </div>
@@ -48,6 +77,7 @@ export default {
   components: {
     Switcher
   },
+  props: ["isChallengerMode", "general", "equipments", "muscleGroups"],
   data() {
     return {
       closing: false
@@ -57,6 +87,13 @@ export default {
     close() {
       this.closing = true;
       setTimeout(() => this.$emit("onClose"), 500);
+    },
+    handleConfigUpdate(section, label, checked) {
+      this.$emit("onConfigUpdate", {
+        section: section,
+        label: label,
+        checked: checked
+      });
     }
   },
   computed: {},
@@ -115,5 +152,15 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
+}
+.option_label--disabled {
+  opacity: 0.5;
+}
+.label {
+  margin-bottom: 0;
+  margin-top: 32px;
+  &:first-of-type {
+    margin-top: 16px;
+  }
 }
 </style>

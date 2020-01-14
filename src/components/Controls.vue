@@ -18,9 +18,9 @@
     </div>
     <Switcher
       class="challenger-mode-container"
-      :isChecked="isChallengerMode"
-      label="Challenger"
-      @onChange="handleBadGamblerUpdate($event)"
+      :isChecked="challengerMode.value"
+      :label="challengerMode.label"
+      @onChange="handleConfigUpdate('general', challengerMode.label, $event)"
     />
   </div>
 </template>
@@ -33,17 +33,17 @@ export default {
   components: {
     Switcher
   },
-  props: ["isChallengerMode", "isPlaying"],
-  model: {
-    prop: "isChallengerMode",
-    event: "onBadGamblerUpdate"
-  },
+  props: ["challengerMode", "isPlaying"],
   data() {
     return {};
   },
   methods: {
-    handleBadGamblerUpdate(checked) {
-      this.$emit("onBadGamblerUpdate", checked);
+    handleConfigUpdate(section, label, checked) {
+      this.$emit("onConfigUpdate", {
+        section: section,
+        label: label,
+        checked: checked
+      });
     },
     roll() {
       this.$emit("onRoll");

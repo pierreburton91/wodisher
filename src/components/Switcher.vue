@@ -1,13 +1,22 @@
 <template>
   <div class="switch-container">
-    <label class="switch">
-      <span v-if="label" class="switch_label">{{ label }}</span>
+    <label class="switch" :class="{ 'switch--disabled': disabled }">
+      <span
+        v-if="label"
+        class="switch_label"
+        :class="{ 'switch_label--disabled': disabled }"
+        >{{ label }}</span
+      >
       <input
         type="checkbox"
         :checked="isChecked"
+        :disabled="disabled"
         @change="onChange($event.target.checked)"
       />
-      <div class="switch_control"></div>
+      <div
+        class="switch_control"
+        :class="{ 'switch_control--disabled': disabled }"
+      ></div>
     </label>
   </div>
 </template>
@@ -15,7 +24,7 @@
 <script>
 export default {
   name: "Switcher",
-  props: ["isChecked", "label"],
+  props: ["isChecked", "label", "disabled"],
   methods: {
     onChange(checked) {
       this.$emit("onChange", checked);
@@ -30,12 +39,10 @@ export default {
 .switch {
   position: relative;
   cursor: pointer;
-  width: 48px;
+  min-width: 48px;
   height: 24px;
   display: flex;
-  & .switch_label {
-    margin-right: 16px;
-  }
+  -webkit-tap-highlight-color: transparent;
   & > input {
     display: none;
   }
@@ -73,6 +80,16 @@ export default {
   & > input:checked ~ .switch_control:after {
     background-color: $primary;
     transform: translateX(24px);
+  }
+
+  .switch_label {
+    margin-right: 16px;
+  }
+  .switch--disabled,
+  .switch_label--disabled,
+  .switch_control--disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 }
 </style>
