@@ -60,11 +60,13 @@ export default {
         reps: null,
         movement: null
       },
-      timer: null
+      timer: null,
+      throtle: null
     };
   },
   methods: {
     roll() {
+      clearTimeout(this.throtle);
       this.setWodisher();
       const availableEquipment = [
         ...new Set(
@@ -98,7 +100,10 @@ export default {
         availableMovements[
           Math.floor(Math.random() * availableMovements.length)
         ];
-      this.setWodisher(reps, movement.name);
+      this.throtle = setTimeout(
+        () => this.setWodisher(reps, movement.name),
+        500
+      );
       this.isPlaying = true;
     },
     setWodisher(reps = null, movement = null) {
