@@ -1,8 +1,15 @@
 <template>
   <div class="section">
     <div class="results">
-      <span class="results_number" :class="{ 'results_number--show': hasWodisher }">{{ wodisher.reps }}</span
-      ><span class="results_movement" :class="{ 'results_movement--show': hasWodisher }">{{ wodisher.movement }}</span>
+      <span
+        class="results_number"
+        :class="{ 'results_number--show': hasWodisher }"
+        >{{ wodisher.reps }}</span
+      ><span
+        class="results_movement"
+        :class="{ 'results_movement--show': hasWodisher }"
+        >{{ wodisher.movement }}</span
+      >
     </div>
   </div>
 </template>
@@ -41,10 +48,10 @@ export default {
   width: 100%;
 }
 .results_number--show {
-  animation: number .16s ease-in-out forwards;
+  animation: number 0.16s ease-in-out forwards;
 }
 .results_movement--show {
-  animation: movement .16s .16s ease-in-out forwards;
+  animation: movement 0.16s 0.16s ease-in-out forwards;
 }
 
 @keyframes number {
