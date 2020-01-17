@@ -47,6 +47,7 @@
     }
   },
   "vue": {
+    "publicPath": "/wodisher/",
     "pwa": {
       "name": "Wodisher",
       "themeColor": "#121317",
