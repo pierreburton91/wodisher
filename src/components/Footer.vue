@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="level-left">
-      <div class="level-item">Copyright 2019</div>
+      <div class="level-item">Copyright 2020</div>
       <div class="level-item">
         <a href="https://pierre-burton.be" target="_blank">Pierre Burton</a>
       </div>
