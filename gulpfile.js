@@ -1,5 +1,5 @@
 const gulp = require("gulp");
-const clean = require('gulp-clean');
+const clean = require("gulp-clean");
 
 gulp.task("move", () => gulp.src("dist/**").pipe(gulp.dest("docs")));
 
