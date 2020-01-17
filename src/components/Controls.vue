@@ -20,6 +20,7 @@
       class="challenger-mode-container"
       :isChecked="challengerMode.value"
       :label="challengerMode.label"
+      data-tooltip="Increase the min and max rep count from 10-60 to 30-120"
       @onChange="handleConfigUpdate('general', challengerMode.label, $event)"
     />
   </div>
@@ -87,6 +88,7 @@ export default {
   .challenger-mode-container {
     display: block;
     margin-top: 32px;
+    max-width: 200px;
   }
 }
 </style>

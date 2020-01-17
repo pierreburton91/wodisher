@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div id="app" class="app">
     <TopBar @onToggleOptionsModal="toggleOptionsModal()" />
     <Placeholders v-if="!isPlaying" />
     <Results v-if="isPlaying" :wodisher="wodisher" />
@@ -82,19 +82,22 @@ export default {
             .flat()
         )
       ];
-      console.log(
-        this.movements.filter(el => {
-          return (
-            el.equipment.some(entry => availableEquipment.includes(entry)) &&
-            el.muscleGroup.some(entry => targetedMuscleGroups.includes(entry))
-          );
-        })
-      );
       const reps =
         Math.floor(Math.random() * (this.max - this.min) + this.min) * 10;
-      const movement = this.movements[
-        Math.floor(Math.random() * this.movements.length)
-      ];
+      const availableMovements = this.movements.filter(el => {
+        return (
+          (!el.equipment.length &&
+            el.muscleGroup.some(entry =>
+              targetedMuscleGroups.includes(entry)
+            )) ||
+          (el.equipment.some(entry => availableEquipment.includes(entry)) &&
+            el.muscleGroup.some(entry => targetedMuscleGroups.includes(entry)))
+        );
+      });
+      const movement =
+        availableMovements[
+          Math.floor(Math.random() * availableMovements.length)
+        ];
       this.setWodisher(reps, movement.name);
       this.isPlaying = true;
     },
@@ -128,10 +131,10 @@ export default {
   },
   computed: {
     max() {
-      return this.config.isChallengerMode ? 13 : 7;
+      return this.config.general[0].value ? 13 : 7;
     },
     min() {
-      return this.config.isChallengerMode ? 3 : 1;
+      return this.config.general[0].value ? 3 : 1;
     },
     equipments() {
       return [...new Set(this.movements.map(item => item.equipment).flat())];
@@ -181,6 +184,7 @@ export default {
   background-color: transparent;
   text-transform: uppercase;
   color: $primary;
+  padding: calc(0.5em - 1px);
 }
 .button--text:hover,
 .button--text.is-hovered,
@@ -192,6 +196,41 @@ export default {
   color: $primary-dark;
 }
 
+.is-text-small {
+  font-size: 0.75em;
+}
+
+.is-muted {
+  opacity: 0.5;
+}
+
+[data-tooltip] {
+  position: relative;
+  &:hover:after {
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    content: attr(data-tooltip);
+    top: 24px;
+    margin-top: 8px;
+    max-width: 240px;
+    margin-bottom: auto;
+    background-color: $darkLight;
+    font-size: 0.75em;
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  &:hover:before {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    border-color: transparent transparent $darkLight transparent;
+    border-style: solid;
+    border-width: 6px;
+    top: 20px;
+    left: 48px;
+  }
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;

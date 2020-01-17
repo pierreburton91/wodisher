@@ -15,7 +15,9 @@
       <label class="label">General</label>
       <div v-for="item of general" :key="item.label" class="option">
         <div class="option_label">
-          {{ item.label }}
+          {{ item.label }}<br /><span class="is-text-small is-muted"
+            >Increase the min and max rep count<br />from 10-60 to 30-120</span
+          >
         </div>
         <div class="option_control">
           <Switcher

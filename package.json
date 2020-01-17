@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "serve:prod": "npx http-server -p 8080 -c-1 dist",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -42,6 +43,15 @@
   "postcss": {
     "plugins": {
       "autoprefixer": {}
+    }
+  },
+  "vue": {
+    "pwa": {
+      "name": "Wodisher",
+      "themeColor": "#121317",
+      "msTileColor": "#121317",
+      "appleMobileWebAppCapable": "yes",
+      "appleMobileWebAppStatusBarStyle": "black-translucent"
     }
   }
 }
