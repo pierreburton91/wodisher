@@ -20,14 +20,6 @@ export default {
       return !!this.wodisher.reps && !!this.wodisher.movement;
     }
   },
-  watch: {
-    wodisher: {
-      handler(val) {
-        console.log(val);
-      },
-      deep: true
-    }
-  },
   created() {}
 };
 </script>
