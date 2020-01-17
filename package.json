@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve:prod": "npx http-server -p 8080 -c-1 dist",
-    "build": "vue-cli-service build && gulp move",
+    "build": "vue-cli-service build && gulp build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -26,6 +26,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
     "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
     "lint-staged": "^9.4.3",
     "node-sass": "^4.13.0",
     "prettier": "^1.19.1",
