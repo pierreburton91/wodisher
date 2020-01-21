@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d44310e6624a832114c9",
-    "url": "/wodisher/css/app.989f5e1f.css"
+    "revision": "9bebac6ca124369e3bb9",
+    "url": "/wodisher/css/app.9ec86160.css"
   },
   {
     "revision": "62a8de72964cce80870c6a9771234d31",
     "url": "/wodisher/img/open-graph.png"
   },
   {
-    "revision": "0974e8450afe98eebddcd32b89832762",
+    "revision": "d5f805c38e59ffd0f84339e02f02b7cc",
     "url": "/wodisher/index.html"
   },
   {
-    "revision": "d44310e6624a832114c9",
-    "url": "/wodisher/js/app.65b9d793.js"
+    "revision": "9bebac6ca124369e3bb9",
+    "url": "/wodisher/js/app.5438ad37.js"
   },
   {
     "revision": "f7786947a627b7759e53",

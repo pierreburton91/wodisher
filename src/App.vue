@@ -170,11 +170,22 @@ export default {
 <style lang="scss">
 @import "@/shared/sass/_variables";
 
+:root {
+  user-select: none;
+}
+
 .app {
   height: 100vh;
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+}
+@media screen and (max-width: 1023px) and (display-mode: browser) and (orientation: portrait) {
+  @supports (-webkit-appearance: none) {
+    .app {
+      height: calc(100vh - 56px);
+    }
+  }
 }
 
 .section {
