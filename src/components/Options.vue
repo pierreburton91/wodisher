@@ -138,15 +138,10 @@ export default {
     },
     async share() {
       if (navigator.share) {
-        try {
-          await navigator.share({
-            title: "Wodisher - It's time to throw you down !",
-            url: location.href
-          });
-          this.$emit("onShare", "Thank you for sharing Wodisher !");
-        } catch (err) {
-          this.$emit("onShare", "An error occured while sharing");
-        }
+        await navigator.share({
+          title: "Wodisher - It's time to throw you down !",
+          url: location.href
+        });
       } else {
         const el = document.createElement("textarea");
         el.value = location.href;
