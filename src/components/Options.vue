@@ -99,7 +99,7 @@
         </div>
         <img class="about_logo" src="../assets/logo.svg" />
         <div class="about_version">
-          v1.0.0
+          v{{ version }}
           <br />
           &#169; {{ year }}, Wodisher
         </div>
@@ -110,6 +110,7 @@
 
 <script>
 import Switcher from "@/components/Switcher.vue";
+const pckg = require("../../package.json");
 
 export default {
   name: "Options",
@@ -119,7 +120,8 @@ export default {
   props: ["isChallengerMode", "general", "equipments", "muscleGroups"],
   data() {
     return {
-      closing: false
+      closing: false,
+      version: pckg.version
     };
   },
   methods: {
