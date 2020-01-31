@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "serve:prod": "npx http-server -p 8080 -c-1 dist",
-    "build": "vue-cli-service build && gulp build",
+    "build": "npm version patch && vue-cli-service build && gulp build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
