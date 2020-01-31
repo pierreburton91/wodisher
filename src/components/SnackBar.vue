@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: 'SnackBar',
+  name: "SnackBar",
   props: ["message"],
   mounted() {
-    setTimeout(() => this.$emit('onHide'), 3000);
+    setTimeout(() => this.$emit("onHide"), 3000);
   }
 };
 </script>

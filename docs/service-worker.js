@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/wodisher/precache-manifest.7d96284393fe64faeb68f4acc86918fb.js"
+  "/wodisher/precache-manifest.96b110c44da940ba1a9e576ce93864cc.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "wodisher"});

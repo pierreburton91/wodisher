@@ -137,24 +137,23 @@ export default {
     async share() {
       if (navigator.share) {
         try {
-        await navigator
-          .share({
+          await navigator.share({
             title: "Wodisher - It's time to throw you down !",
             url: location.href
-          })
-        this.$emit('onShare', "Thank you for sharing Wodisher !");
+          });
+          this.$emit("onShare", "Thank you for sharing Wodisher !");
         } catch (err) {
-          this.$emit('onShare', "An error occured while sharing");
+          this.$emit("onShare", "An error occured while sharing");
         }
       } else {
-        const el = document.createElement('textarea');
+        const el = document.createElement("textarea");
         el.value = location.href;
         document.body.appendChild(el);
         el.select();
         el.setSelectionRange(0, 9999999);
-        document.execCommand('copy');
+        document.execCommand("copy");
         document.body.removeChild(el);
-        this.$emit('onShare', "Link copied in clipboard !");
+        this.$emit("onShare", "Link copied in clipboard !");
       }
     }
   },
