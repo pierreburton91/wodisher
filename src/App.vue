@@ -15,9 +15,15 @@
       v-if="showOptionsModal"
       @onClose="toggleOptionsModal()"
       @onConfigUpdate="handleConfigUpdate($event)"
+      @onShare="toggleSnackBar($event)"
       :general="config.general"
       :equipments="config.equipments"
       :muscleGroups="config.muscleGroups"
+    />
+    <SnackBar
+      v-if="snackBar.show"
+      :message="snackBar.message"
+      @onHide="toggleSnackBar()"
     />
   </div>
 </template>
@@ -29,6 +35,7 @@ import Results from "@/components/Results.vue";
 import Controls from "@/components/Controls.vue";
 import Footer from "@/components/Footer.vue";
 import Options from "@/components/Options.vue";
+import SnackBar from "@/components/SnackBar.vue";
 import movements from "@/data/movements";
 
 export default {
@@ -39,7 +46,8 @@ export default {
     Results,
     Controls,
     Footer,
-    Options
+    Options,
+    SnackBar
   },
   data() {
     return {
@@ -61,7 +69,11 @@ export default {
         movement: null
       },
       timer: null,
-      throtle: null
+      throtle: null,
+      snackBar: {
+        show: false,
+        message: null
+      }
     };
   },
   methods: {
@@ -132,6 +144,13 @@ export default {
       const configObj = this.config[section].find(el => el.label === label);
       configObj.value = checked;
       this.saveConfig();
+    },
+    toggleSnackBar(text = null) {
+      if (text && this.snackBar.show) {
+        this.snackBar.show = false;
+      }
+      this.snackBar.message = text;
+      this.snackBar.show = !this.snackBar.show;
     }
   },
   computed: {

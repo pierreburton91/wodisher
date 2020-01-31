@@ -67,6 +67,43 @@
           />
         </div>
       </div>
+      <div class="about">
+        <label class="label">About</label>
+        <div class="option">
+          <div class="option_label">
+            Made with 💪 by
+          </div>
+          <div class="option_control">
+            <a href="https://pierre-burton.be" target="_blank">Pierre Burton</a>
+          </div>
+        </div>
+        <div class="option">
+          <div class="option_label">
+            Spread the love
+          </div>
+          <div class="option_control">
+            <button type="button" class="icon-button" @click="share()">
+              <svg
+                class="share"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 0 24 24"
+                width="24"
+              >
+                <path
+                  d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <img class="about_logo" src="../assets/logo.svg" />
+        <div class="about_version">
+          v1.0.0
+          <br />
+          &#169; {{ year }}, Wodisher
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -96,9 +133,39 @@ export default {
         label: label,
         checked: checked
       });
+    },
+    async share() {
+      if (navigator.share) {
+        try {
+        await navigator
+          .share({
+            title: "Wodisher - It's time to throw you down !",
+            url: location.href
+          })
+        this.$emit('onShare', "Thank you for sharing Wodisher !");
+        } catch (err) {
+          this.$emit('onShare', "An error occured while sharing");
+        }
+      } else {
+        const el = document.createElement('textarea');
+        el.value = location.href;
+        document.body.appendChild(el);
+        el.select();
+        el.setSelectionRange(0, 9999999);
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        this.$emit('onShare', "Link copied in clipboard !");
+      }
     }
   },
-  computed: {},
+  computed: {
+    year() {
+      return new Date().getFullYear();
+    },
+    isShareAvailable() {
+      return !!navigator.share;
+    }
+  },
   created() {}
 };
 </script>
@@ -163,6 +230,41 @@ export default {
   margin-top: 32px;
   &:first-of-type {
     margin-top: 16px;
+  }
+}
+
+.about {
+  margin-top: 40px;
+}
+.about_logo {
+  max-height: 32px;
+  margin-top: 32px;
+}
+.about_version {
+  text-align: center;
+  font-size: 0.75rem;
+  opacity: 0.5;
+}
+
+.icon-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.share {
+  height: 24px;
+}
+.share path {
+  fill: $primary;
+  box-shadow: 0 3px 6px rgba($primary, 0.3);
+}
+.icon-button:hover,
+.icon-button:active {
+  & .share path {
+    fill: $primary-dark;
   }
 }
 </style>

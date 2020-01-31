@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="level-left">
-      <div class="level-item">Copyright 2020</div>
+      <div class="level-item">&#169; {{ year }}, Wodisher</div>
       <div class="level-item">
         <a href="https://pierre-burton.be" target="_blank">Pierre Burton</a>
       </div>
@@ -11,7 +11,12 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "Footer",
+  computed: {
+    year() {
+      return new Date().getFullYear();
+    }
+  }
 };
 </script>
 

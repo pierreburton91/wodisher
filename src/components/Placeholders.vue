@@ -12,7 +12,9 @@ export default {
       quotes: [
         "<span class='fade-in-out'>Si vis pacem, para bellum.</span>",
         "<span class='fade-in-out'>I've no idea how things will end up.</span>",
-        "<span class='fade-in-out'>My favorite sound in the world is the silence after the first gunshot.</span>"
+        "<span class='fade-in-out'>My favorite sound in the world is the silence after the first gunshot.</span>",
+        "<span class='fade-in-out'>People think that torture is pain. It's not pain, it's time.</span>",
+        "<span class='fade-in-out'>Happy is a kick in the balls waiting to happen.</span>"
       ],
       index: 0,
       interval: null
