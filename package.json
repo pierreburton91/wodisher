@@ -6,6 +6,9 @@
     "serve": "vue-cli-service serve",
     "serve:prod": "npx http-server -p 8080 -c-1 dist",
     "build": "npm version patch && vue-cli-service build && gulp build",
+    "build:patch": "npm version patch && vue-cli-service build && gulp build",
+    "build:minor": "npm version minor && vue-cli-service build && gulp build",
+    "build:major": "npm version major && vue-cli-service build && gulp build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
