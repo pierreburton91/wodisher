@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7a19b8ff62da3cebdf8f",
+    "revision": "d0a1e0f4d38027981762",
     "url": "/wodisher/css/app.46d49c93.css"
   },
   {
@@ -12,12 +12,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wodisher/img/open-graph.png"
   },
   {
-    "revision": "153dce56a2ffad930105347485f678e2",
+    "revision": "947df2479c4c27bb82c000a457d38fce",
     "url": "/wodisher/index.html"
   },
   {
-    "revision": "7a19b8ff62da3cebdf8f",
-    "url": "/wodisher/js/app.d08bc235.js"
+    "revision": "d0a1e0f4d38027981762",
+    "url": "/wodisher/js/app.6d01b98a.js"
   },
   {
     "revision": "16c35ef6924ea2860428",
