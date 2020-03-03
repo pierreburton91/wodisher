@@ -12,6 +12,37 @@
         <h2 class="container_title">Options</h2>
         <button class="button button--text" @click.self="close()">Close</button>
       </div>
+      <div v-if="showiOSInstallPrompt" class="install-prompt">
+        <label class="install-prompt_label">
+          <svg
+            class="label_svg"
+            xmlns="http://www.w3.org/2000/svg"
+            width="512"
+            height="512"
+            viewBox="0 0 512 512"
+          >
+            <path
+              d="M336,192h40a40,40,0,0,1,40,40V424a40,40,0,0,1-40,40H136a40,40,0,0,1-40-40V232a40,40,0,0,1,40-40h40"
+              style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+            />
+            <polyline
+              points="336 128 256 48 176 128"
+              style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+            />
+            <line
+              x1="256"
+              y1="321"
+              x2="256"
+              y2="48"
+              style="fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"
+            />
+          </svg>
+          Add it to your homescreen !</label
+        >
+        <div class="install-prompt_text">
+          Enjoy Wodisher like any other app by adding it to your homescreen.
+        </div>
+      </div>
       <label class="label">General</label>
       <div v-for="item of general" :key="item.label" class="option">
         <div class="option_label">
@@ -160,9 +191,17 @@ export default {
     },
     isShareAvailable() {
       return !!navigator.share;
+    },
+    showiOSInstallPrompt() {
+      const isIos = /iphone|ipad|ipod/.test(
+        window.navigator.userAgent.toLowerCase()
+      );
+      const isInStandaloneMode =
+        "standalone" in window.navigator && window.navigator.standalone;
+
+      return isIos && !isInStandaloneMode;
     }
-  },
-  created() {}
+  }
 };
 </script>
 
@@ -262,5 +301,27 @@ export default {
   & .share path {
     fill: $primary-dark;
   }
+}
+
+.install-prompt {
+  padding: 1rem;
+  background-color: #650cc7;
+  border-radius: 16px;
+}
+.install-prompt_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.label_svg {
+  stroke: currentColor;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 8px;
+}
+.install-prompt_text {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin-top: 8px;
 }
 </style>
