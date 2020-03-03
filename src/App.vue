@@ -37,6 +37,7 @@ import Footer from "@/components/Footer.vue";
 import Options from "@/components/Options.vue";
 import SnackBar from "@/components/SnackBar.vue";
 import movements from "@/data/movements";
+import { register } from "register-service-worker";
 
 export default {
   name: "app",
@@ -181,6 +182,26 @@ export default {
       this.getConfig();
     } else {
       this.setDefaultConfig();
+    }
+
+    if (process.env.NODE_ENV === "production") {
+      const self = this;
+      register(`${process.env.BASE_URL}service-worker.js`, {
+        ready() {},
+        registered() {},
+        cached() {},
+        updatefound() {},
+        updated() {
+          self.toggleSnackBar(
+            "<div>Nouvelle version disponible</div><div>L'application sera mise à jour dans 3 secondes...</div>"
+          );
+          setTimeout(() => window.location.reload(true), 3000);
+        },
+        offline() {},
+        error(error) {
+          console.error("Error during service worker registration:", error);
+        }
+      });
     }
   }
 };

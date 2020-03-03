@@ -1,7 +1,5 @@
 <template>
-  <div class="snackbar">
-    {{ message }}
-  </div>
+  <div class="snackbar" v-html="message"></div>
 </template>
 
 <script>
