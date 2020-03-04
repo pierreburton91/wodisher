@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "edcfa4999665d89eadb5",
+    "revision": "699e16dcdae201324dd8",
     "url": "/wodisher/css/app.720569f7.css"
   },
   {
@@ -40,12 +40,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/wodisher/img/splash/750x1334.png"
   },
   {
-    "revision": "3807e064b0b8b4668f0a46af929e2e88",
+    "revision": "370a46a503bec208ab3b76656ec936df",
     "url": "/wodisher/index.html"
   },
   {
-    "revision": "edcfa4999665d89eadb5",
-    "url": "/wodisher/js/app.573ee84d.js"
+    "revision": "699e16dcdae201324dd8",
+    "url": "/wodisher/js/app.2bf6284e.js"
   },
   {
     "revision": "16c35ef6924ea2860428",
