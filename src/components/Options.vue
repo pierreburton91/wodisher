@@ -238,6 +238,11 @@ export default {
   overflow-y: auto;
   animation: swipeUp 0.5s ease forwards;
 }
+@supports (-webkit-overflow-scrolling: touch) {
+  .options_container {
+    -webkit-overflow-scrolling: touch;
+  }
+}
 .options_container--hidden {
   animation: swipeDown 0.5s ease forwards;
 }

@@ -56,7 +56,6 @@
       "themeColor": "#121317",
       "msTileColor": "#121317",
       "appleMobileWebAppCapable": "yes",
-      "appleMobileWebAppStatusBarStyle": "black-translucent",
       "workboxOptions": {
         "skipWaiting": true
       }
